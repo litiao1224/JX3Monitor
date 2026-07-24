@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jx3-click-monitor"
+version = "1.0.0"
+description = "剑网3金团/开团监控与结算工具"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "customtkinter>=5.2",
+    "Pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.4",
+    "mypy>=1.8",
+]
+pyinstaller = [
+    "pyinstaller>=6.0",
+]
+
+[project.scripts]
+jx3-monitor = "jx3_click_monitor:main"
+
+[tool.setuptools.packages.find]
+include = ["src*", "tests*"]
+exclude = ["jx3_click_monitor*", "jx3_click_monitor_gui*", "jx3_click_monitor_gui_ctk*", "test_font*", "test_shapes*"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false

@@ -1,0 +1,59 @@
+{
+  "business_event_count": 4,
+  "kind_counts": {
+    "auction_start": 1,
+    "bid": 1,
+    "final_purchase": 1,
+    "team_append_income": 1
+  },
+  "auction_item_count": 1,
+  "bid_count": 1,
+  "money_gain_total_raw": 0,
+  "item_gain_totals_top": {},
+  "team_bid_candidate_count": 0,
+  "team_bid_candidates_sample": [],
+  "auctions": [
+    {
+      "item": "玄晶",
+      "starts": [
+        {
+          "time": 1781232001,
+          "label": null,
+          "source_type": 8,
+          "rowid": 2,
+          "db": "golden_a.db",
+          "text": "[团队][团长]：[玄晶]开始拍卖",
+          "text_source": "text",
+          "kind": "auction_start",
+          "sender": "团长",
+          "item": "玄晶"
+        }
+      ],
+      "bids": [
+        {
+          "time": 1781232002,
+          "label": null,
+          "source_type": 8,
+          "rowid": 3,
+          "db": "golden_a.db",
+          "text": "[团队][团长]：[老板一]以[1000金]叫价[玄晶]",
+          "text_source": "text",
+          "kind": "bid",
+          "sender": "团长",
+          "bidder": "老板一",
+          "item": "玄晶",
+          "amount_text": "1000金",
+          "amount_gold": 1000
+        }
+      ],
+      "highest_bid": {
+        "bidder": "老板一",
+        "amount_gold": 1000,
+        "time": 1781232002,
+        "label": null
+      }
+    }
+  ],
+  "updated_at": 1784892243.325772,
+  "updated_label": "2026-07-24 19:24:03"
+}

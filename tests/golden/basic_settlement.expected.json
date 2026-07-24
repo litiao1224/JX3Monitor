@@ -1,0 +1,33 @@
+﻿{
+  "business_event_count": 4,
+  "kind_counts": {
+    "auction_start": 1,
+    "bid": 1,
+    "final_purchase": 1,
+    "team_append_income": 1
+  },
+  "business_kinds": [
+    "auction_start",
+    "bid",
+    "final_purchase",
+    "team_append_income"
+  ],
+  "report_subset": {
+    "instance_name": "冷龙峰",
+    "total_auction_gold": 1500,
+    "purchase_count": 1,
+    "paid_purchase_total_gold": 1200,
+    "calculated_purchase_total_gold": 1500,
+    "team_append_income_total_gold": 300,
+    "subsidy_gold": 200,
+    "distributable_gold": 1300,
+    "member_count": 5,
+    "average_wage_gold": 200,
+    "purchase_source": "explicit_final_purchase",
+    "purchase_total_vs_settlement_status": "match",
+    "identity": {
+      "role_name": "团长",
+      "server": "测试服"
+    }
+  }
+}

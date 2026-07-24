@@ -1,0 +1,194 @@
+{
+  "instance_name": "冷龙峰",
+  "instance_confidence": "confirmed",
+  "instance_source": "known_name_in_text",
+  "instance_info": {
+    "name": "冷龙峰",
+    "confidence": "confirmed",
+    "source": "known_name_in_text",
+    "source_text": "[团队][团长]：[老板二]于25人英雄冷龙峰向团队里追加了[300金]，请前往25人英雄冷龙峰打开拍团记录界面查看"
+  },
+  "session_start_ts": 1781232000,
+  "session_end_ts": 1781232060,
+  "session_start_label": "2026-06-12 10:40:00",
+  "session_stop_label": null,
+  "purchase_count": 1,
+  "identity": {
+    "role_name": "团长",
+    "server": "测试服",
+    "display": "团长 / 测试服"
+  },
+  "all_purchase_record_count": 1,
+  "zero_price_record_count": 0,
+  "purchase_source": "explicit_final_purchase",
+  "session_analysis_mode": "live_session",
+  "business_kind_counts": {
+    "auction_start": 1,
+    "bid": 1,
+    "final_purchase": 1,
+    "team_append_income": 1
+  },
+  "business_event_count": 4,
+  "purchases": [
+    {
+      "item": "玄晶",
+      "buyer": "老板一",
+      "target": null,
+      "amount_gold": 1200,
+      "reconciliation_source": "explicit_final_purchase",
+      "reconciliation_source_label": "明确成交/购买记录",
+      "time": 1781232003,
+      "label": null,
+      "source_text": "[老板一]花费[1200金]购买了[玄晶] 拍团目前总收入：1200金，补贴费用：200金，实际可分配金额：1000金，分配人数：5人，每人底薪：200金"
+    }
+  ],
+  "team_append_incomes": [
+    {
+      "time": 1781232005,
+      "label": null,
+      "source_type": 8,
+      "rowid": 6,
+      "db": "golden_a.db",
+      "text": "[团队][团长]：[老板二]于25人英雄冷龙峰向团队里追加了[300金]，请前往25人英雄冷龙峰打开拍团记录界面查看",
+      "text_source": "text",
+      "kind": "team_append_income",
+      "player": "老板二",
+      "instance": "25人英雄冷龙峰",
+      "amount_text": "300金",
+      "amount_gold": 300
+    }
+  ],
+  "team_append_income_count": 1,
+  "team_append_income_total_gold": 300,
+  "team_append_income_after_settlement_gold": 300,
+  "zero_price_records": [],
+  "superseded_purchase_count": 0,
+  "superseded_purchases": [],
+  "paid_purchase_total_gold": 1200,
+  "calculated_purchase_total_gold": 1500,
+  "purchase_reconciliation": [
+    {
+      "item": "玄晶",
+      "chosen_source": "explicit_final_purchase",
+      "chosen_source_label": "明确成交/购买记录",
+      "chosen_amount_gold": 1200,
+      "explicit_amount_gold": 1200,
+      "fallback_amount_gold": null,
+      "explicit_buyer": "老板一",
+      "fallback_buyer": null
+    }
+  ],
+  "purchase_total_vs_settlement_diff_gold": 0,
+  "total_auction_gold": 1500,
+  "subsidy_gold": 200,
+  "distributable_gold": 1300,
+  "latest_settlement_snapshot": {
+    "total_income_gold": 1200,
+    "subsidy_gold": 200,
+    "distributable_gold": 1000,
+    "member_count": 5,
+    "base_wage_gold": 200,
+    "valid": true,
+    "issues": [],
+    "time": 1781232003,
+    "label": null,
+    "source_text": "[老板一]花费[1200金]购买了[玄晶] 拍团目前总收入：1200金，补贴费用：200金，实际可分配金额：1000金，分配人数：5人，每人底薪：200金"
+  },
+  "settlement_snapshot_count_raw": 1,
+  "settlement_snapshot_count_after_dedupe": 1,
+  "ignored_single_member_settlement_count": 0,
+  "auction_instance_count": 1,
+  "auction_instances_after_relist_filter_count": 1,
+  "auction_instances_after_relist_filter": [
+    {
+      "instance_id": "auction_0001",
+      "item": "玄晶",
+      "start_time": 1781232001,
+      "start_label": null,
+      "start_text": "[团队][团长]：[玄晶]开始拍卖",
+      "start_rowid": 2,
+      "bids": [
+        {
+          "time": 1781232002,
+          "label": null,
+          "source_type": 8,
+          "rowid": 3,
+          "db": "golden_a.db",
+          "text": "[团队][团长]：[老板一]以[1000金]叫价[玄晶]",
+          "text_source": "text",
+          "kind": "bid",
+          "sender": "团长",
+          "bidder": "老板一",
+          "item": "玄晶",
+          "amount_text": "1000金",
+          "amount_gold": 1000
+        }
+      ],
+      "highest_bid": {
+        "bidder": "老板一",
+        "amount_gold": 1000,
+        "time": 1781232002,
+        "label": null,
+        "text": "[团队][团长]：[老板一]以[1000金]叫价[玄晶]"
+      }
+    }
+  ],
+  "member_count": 5,
+  "member_count_source": "chat_settlement_summary",
+  "inferred_participants": [
+    "老板一",
+    "老板二"
+  ],
+  "average_wage_gold": 200,
+  "self_name": "团长",
+  "self_raw_money_gain_gold": 0.0,
+  "self_raw_money_gain_copper": 0,
+  "self_money_event_count": 0,
+  "boss_reward_gold": 0.0,
+  "boss_reward_event_count": 0,
+  "boss_reward_events": [],
+  "wage_receipt_check": {
+    "base_wage_gold": 200.0,
+    "manual_personal_subsidy_gold": null,
+    "detected_personal_subsidy_gold": 0.0,
+    "expected_income_gold": 200.0,
+    "actual_income_gold": 200.0,
+    "diff_gold": 0.0,
+    "status": "match",
+    "tolerance_gold": 1,
+    "chosen_receipt": null,
+    "candidate_count": 0
+  },
+  "self_income_source": "base_wage_no_money_receipt",
+  "personal_subsidy_gold": null,
+  "detected_personal_subsidy_gold": 0.0,
+  "self_estimated_wage_gold": 200.0,
+  "self_actual_income_gold": 200.0,
+  "self_estimated_total_gain_gold": 200.0,
+  "buyer_totals": [
+    {
+      "buyer": "老板一",
+      "total_gold": 1200,
+      "items": [
+        {
+          "item": "玄晶",
+          "buyer": "老板一",
+          "target": null,
+          "amount_gold": 1200,
+          "reconciliation_source": "explicit_final_purchase",
+          "reconciliation_source_label": "明确成交/购买记录",
+          "time": 1781232003,
+          "label": null,
+          "source_text": "[老板一]花费[1200金]购买了[玄晶] 拍团目前总收入：1200金，补贴费用：200金，实际可分配金额：1000金，分配人数：5人，每人底薪：200金"
+        }
+      ]
+    }
+  ],
+  "all_bid_count": 1,
+  "note": "优先使用聊天中的最终购买/结算公告；没有公告时退回到最高叫价估算；团队追加收入计入拍团总收入。工资条要求总收入/补贴/可分配/人数/底薪五项完整且数值自洽。个人收入不再累加全场 MSG_MONEY；10金整的你获得视为 boss 击杀奖励并排除；优先取工资条之后的本机到账作为实际收入，没有到账记录时用底薪作为本机实际收入。",
+  "updated_at": 1784892243.3534167,
+  "updated_label": "2026-07-24 19:24:03",
+  "purchase_total_vs_settlement_status": "match",
+  "purchase_total_vs_settlement_status_label": "一致",
+  "purchase_total_vs_settlement_note": "明确成交合计与工资条总收入基本一致。"
+}
