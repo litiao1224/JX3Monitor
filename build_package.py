@@ -79,7 +79,10 @@ if result.returncode == 0 and temp_app_dir.exists():
             print(f"Warning cleaning old target dir: {exc}")
             
     print(f"Copying build output to {target_app_dir}...")
-    shutil.copytree(temp_app_dir, target_app_dir, dirs_exist_ok=True)
+    if sys.platform == "win32":
+        subprocess.run(["robocopy", str(temp_app_dir), str(target_app_dir), "/MIR", "/NJH", "/NJS", "/NC", "/NS", "/NP"], capture_output=True)
+    else:
+        shutil.copytree(temp_app_dir, target_app_dir, dirs_exist_ok=True, ignore_dangling_symlinks=True)
     
     # Create ZIP archive for distribution
     print("\n=== Creating distribution ZIP archive ===")
