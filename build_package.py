@@ -95,7 +95,7 @@ if result.returncode == 0 and temp_app_dir.exists():
     archive_base = str(dist_dir / "小鹦鹉记账")
     zip_result = shutil.make_archive(archive_base, "zip", str(dist_dir), "小鹦鹉记账")
     zip_size_mb = os.path.getsize(zip_result) / (1024 * 1024)
-    print(f"\n✅ 打包成功！")
+    print(f"\n[打包成功]")
     print(f"1. 独立运行路径: {target_app_dir / '小鹦鹉记账.exe'}")
     print(f"2. 免安装压缩包: {zip_result} ({zip_size_mb:.2f} MB)")
 else:
