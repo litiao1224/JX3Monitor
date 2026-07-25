@@ -4,14 +4,22 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
+from pathlib import Path
 
 # Navigate to project root
-project_root = os.path.dirname(os.path.abspath(__file__))
-os.chdir(project_root)
+project_root = Path(os.getcwd()).resolve()
 
 print(f"Python: {sys.executable}")
 print(f"Python version: {sys.version}")
-print(f"Working directory: {os.getcwd()}")
+print(f"Working directory: {project_root}")
+
+# Terminate any running instances of the app to avoid file lock
+if sys.platform == "win32":
+    try:
+        subprocess.run(["taskkill", "/F", "/IM", "小鹦鹉记账.exe", "/T"], capture_output=True)
+    except Exception:
+        pass
 
 # Ensure PyInstaller and runtime packages are installed
 for pkg in ["customtkinter", "Pillow", "pyinstaller"]:
@@ -23,29 +31,26 @@ for pkg in ["customtkinter", "Pillow", "pyinstaller"]:
     except Exception as exc:
         print(f"Warning checking package {pkg}: {exc}")
 
-# Clean old dist/build artifacts
-dist_dir = os.path.join(project_root, "dist")
-build_dir = os.path.join(project_root, "build")
-app_dist_dir = os.path.join(dist_dir, "小鹦鹉记账")
-zip_output_path = os.path.join(dist_dir, "小鹦鹉记账.zip")
+# Build in local temp dir to prevent Google Drive file lock errors
+temp_build_dir = Path(tempfile.gettempdir()) / "jx3_monitor_build"
+temp_dist = temp_build_dir / "dist"
+temp_work = temp_build_dir / "build"
 
-print("\n=== Cleaning old build artifacts ===")
-if os.path.exists(build_dir):
-    shutil.rmtree(build_dir, ignore_errors=True)
-if os.path.exists(app_dist_dir):
-    shutil.rmtree(app_dist_dir, ignore_errors=True)
-if os.path.exists(zip_output_path):
+if temp_build_dir.exists():
     try:
-        os.remove(zip_output_path)
+        shutil.rmtree(temp_build_dir, ignore_errors=True)
     except Exception:
         pass
+temp_dist.mkdir(parents=True, exist_ok=True)
+temp_work.mkdir(parents=True, exist_ok=True)
 
-# Run PyInstaller with spec file
+# Run PyInstaller specifying --distpath and --workpath
 print("\n=== Starting PyInstaller build ===")
 cmd = [
     sys.executable, "-m", "PyInstaller",
-    "--clean",
     "--noconfirm",
+    "--distpath", str(temp_dist),
+    "--workpath", str(temp_work),
     "小鹦鹉记账.spec"
 ]
 print(f"Command: {' '.join(cmd)}")
@@ -55,17 +60,41 @@ if result.stdout:
 if result.stderr:
     print("STDERR:", result.stderr[-1000:])
 
-if result.returncode == 0 and os.path.exists(app_dist_dir):
-    print("\n=== Build successful! ===")
-    print(f"Executable directory: {app_dist_dir}")
-    print(f"Main EXE: {os.path.join(app_dist_dir, '小鹦鹉记账.exe')}")
+temp_app_dir = temp_dist / "小鹦鹉记账"
+
+if result.returncode == 0 and temp_app_dir.exists():
+    print("\n=== PyInstaller build successful! ===")
+    
+    # Copy build result to local dist directory
+    dist_dir = project_root / "dist"
+    target_app_dir = dist_dir / "小鹦鹉记账"
+    zip_output_path = dist_dir / "小鹦鹉记账.zip"
+    
+    dist_dir.mkdir(parents=True, exist_ok=True)
+    
+    if target_app_dir.exists():
+        try:
+            shutil.rmtree(target_app_dir, ignore_errors=True)
+        except Exception as exc:
+            print(f"Warning cleaning old target dir: {exc}")
+            
+    print(f"Copying build output to {target_app_dir}...")
+    shutil.copytree(temp_app_dir, target_app_dir, dirs_exist_ok=True)
     
     # Create ZIP archive for distribution
     print("\n=== Creating distribution ZIP archive ===")
-    archive_base = os.path.join(dist_dir, "小鹦鹉记账")
-    zip_result = shutil.make_archive(archive_base, "zip", dist_dir, "小鹦鹉记账")
+    if zip_output_path.exists():
+        try:
+            zip_output_path.unlink()
+        except Exception:
+            pass
+            
+    archive_base = str(dist_dir / "小鹦鹉记账")
+    zip_result = shutil.make_archive(archive_base, "zip", str(dist_dir), "小鹦鹉记账")
     zip_size_mb = os.path.getsize(zip_result) / (1024 * 1024)
-    print(f"ZIP package created: {zip_result} ({zip_size_mb:.2f} MB)")
+    print(f"\n✅ 打包成功！")
+    print(f"1. 独立运行路径: {target_app_dir / '小鹦鹉记账.exe'}")
+    print(f"2. 免安装压缩包: {zip_result} ({zip_size_mb:.2f} MB)")
 else:
-    print(f"\n=== Build FAILED (exit code {result.returncode}) ===")
+    print(f"\n=== 打包失败 (Exit Code {result.returncode}) ===")
     sys.exit(1)

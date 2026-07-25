@@ -43,8 +43,6 @@ a = Analysis(
         'pathlib',
         # CLI module
         'jx3_click_monitor',
-        # Legacy GUI module
-        'jx3_click_monitor_gui',
         # Core modules (newly split)
         'src.core.utils',
         'src.core.scanner',
