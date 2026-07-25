@@ -23,10 +23,10 @@ wheels/
 *.egg-info/
 *.egg
 
-# PyInstaller
+# PyInstaller & Local helper scripts
 *.manifest
 *.spec
-!小鹦鹉记账.spec
+*.bat
 
 # Local DB & logs
 *.db
