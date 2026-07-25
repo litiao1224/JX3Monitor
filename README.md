@@ -6,21 +6,25 @@
 
 `<JX3路径>\interface\my#data\**\userdata\chat_log\chatlog_*.v2.db`
 
-## 桌面版运行方式
+## 🚀 快速开始
 
-桌面端提供以下 2 种主要运行/分发方式：
+### 1. 软件下载（推荐普通用户）
+可以直接前往本仓库的 [Releases 页面](https://github.com/litiao1224/JX3Monitor/releases) 下载最新发布的桌面版绿色免安装压缩包或 `.exe` 独立运行程序。
 
-1. **直接运行解压版可执行程序 (.exe)**：
-   ```text
-   dist\小鹦鹉记账\小鹦鹉记账.exe
-   ```
+### 2. 源码运行（适合开发者）
+依赖环境：Python 3.10+
 
-2. **绿色免安装分发压缩包 (.zip)**：
-   ```text
-   dist\小鹦鹉记账.zip
-   ```
+```powershell
+# 克隆仓库
+git clone https://github.com/litiao1224/JX3Monitor.git
+cd JX3Monitor
 
-> 💡 **打包说明**：双击根目录下的 `打包exe.bat` 即可在一键自动完成 `.exe` 可执行文件与 `.zip` 免安装压缩包的编译打包。
+# 安装依赖
+pip install customtkinter Pillow
+
+# 启动 GUI 桌面应用
+python src/main.py
+```
 
 ---
 
